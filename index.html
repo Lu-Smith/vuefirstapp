@@ -14,13 +14,14 @@
   <body>
     <div id="content" class="container">
       <h1>{{pageTitle}}</h1>
-      <p>Welcome to a wonderful world of View</p>
+      <p>{{content}}</p>
     </div>
     <script>
       Vue.createApp({
         data() {
           return {
             pageTitle: "Hello, Vue",
+            content: "Welcome to a wonderful world of View",
           };
         },
       }).mount("#content");
