@@ -16,33 +16,45 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">My Vue</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li v-for="(link, index) in links" class="nav-item" :key="index">
+          <li v-for="(page, index) in pages" class="nav-item" :key="index">
             <a
               class="nav-link"
               aria-current="page"
-              v-bind:href="link.url"
-              :title="`This link goes to the ${link.text} page`"
-              >{{link.text}}</a
+              v-bind:href="page.link.url"
+              :title="`This link goes to the ${page.link.text} page`"
+              v-on:click="activePage = index"
+              >{{page.link.text}}</a
             >
           </li>
         </ul>
       </div>
     </nav>
     <div id="content" class="container">
-      <h1>{{pageTitle}}</h1>
-      <p>{{content}}</p>
+      <h1>{{pages[activePage].pageTitle}}</h1>
+      <p>{{pages[activePage].content}}</p>
     </div>
     <script>
       Vue.createApp({
         data() {
           return {
-            links: [
-              { text: "Home", url: "index.html" },
-              { text: "About", url: "about.html" },
-              { text: "Contacr", url: "contact.html" },
+            activePage: 0,
+            pages: [
+              {
+                link: { text: "Home", url: "index.html" },
+                pageTitle: "Hello, Vue",
+                content: "Welcome to a wonderful world of View",
+              },
+              {
+                link: { text: "About", url: "about.html" },
+                pageTitle: "About",
+                content: "Welcome to about page",
+              },
+              {
+                link: { text: "Contact", url: "contact.html" },
+                pageTitle: "Contact",
+                content: "Contact me",
+              },
             ],
-            pageTitle: "Hello, Vue",
-            content: "Welcome to a wonderful world of View",
           };
         },
       }).mount("body");
