@@ -12,13 +12,14 @@
     <title>Vue Basics</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">My Vue</a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li v-for="(page, index) in pages" class="nav-item" :key="index">
             <a
               class="nav-link"
+              :class="{active: activePage == index}"
               aria-current="page"
               v-bind:href="page.link.url"
               :title="`This link goes to the ${page.link.text} page`"
