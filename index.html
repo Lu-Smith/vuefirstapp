@@ -31,10 +31,7 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button
-            class="btn btn-primary"
-            @click.prevent="theme = theme == 'dark' ? 'light' : 'dark' "
-          >
+          <button class="btn btn-primary" @click.prevent="changeTheme ">
             Mood
           </button>
         </form>
@@ -68,6 +65,17 @@
               },
             ],
           };
+        },
+        methods: {
+          changeTheme() {
+            let theme = "light";
+
+            if (this.theme == "light") {
+              theme = "dark";
+            }
+
+            this.theme = theme;
+          },
         },
       }).mount("body");
     </script>
